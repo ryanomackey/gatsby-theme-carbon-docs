@@ -48,16 +48,16 @@ This file lets the theme know what you want the top-level sections of your left 
 
 For example, if we wanted to add a new section, we could do so by simply adding a new entry like so:
 
-```yaml{7-9}:title=data/sections.yaml
--
-  location: books
-  title: Books
--
-  location: movies
-  title: Movies
--
-  location: music
-  title: Music
+```diff
+  -
+    location: books
+    title: Books
+  -
+    location: movies
+    title: Movies
++ -
++   location: music
++   title: Music
 ```
 
 #### Adding a new page
