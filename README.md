@@ -2,6 +2,8 @@
 
 Gatsby theme for MDX-powered docs using the Carbon Design System
 
+![sample screenshot](./sample-screenshot.png)
+
 ## Using the theme
 
 ### Getting started
