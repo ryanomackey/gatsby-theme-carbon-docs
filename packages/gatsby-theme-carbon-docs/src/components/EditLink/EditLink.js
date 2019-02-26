@@ -13,15 +13,23 @@ const EditLink = ({ fileAbsolutePath }) => (
     query={graphql`
       query EditLinkQuery {
         site {
+          siteMetadata {
+            gitUrl
+          }
           pathPrefix
         }
       }
     `}
-    render={({ site: { pathPrefix } }) => {
+    render={({
+      site: {
+        siteMetadata: { gitUrl },
+        pathPrefix,
+      },
+    }) => {
       return (
         <Styled.Container>
           <Styled.Button
-            href={`https://github.ibm.com${pathPrefix}/edit/master/docs${getRelativePath(
+            href={`${gitUrl}${pathPrefix}/edit/master/docs${getRelativePath(
               fileAbsolutePath,
             )}`}
             target="_blank"

@@ -1,4 +1,4 @@
-export const getTitle = className => {
+export const getTitle = (className = '') => {
   const hasTitle = !!className.split(':')[1];
 
   if (hasTitle) {
@@ -8,7 +8,7 @@ export const getTitle = className => {
   return null;
 };
 
-export const getHighlights = className => {
+export const getHighlights = (className = '') => {
   const regex = /{\d+(-\d+|-\d+,\d+-\d+)?}/;
   const hasHighlights = !!className.match(regex);
 
@@ -55,7 +55,7 @@ export const isHighlighted = (i, flatHighlights) =>
     ? { className: 'gatsby-highlight-code-line' }
     : null;
 
-export const getLanguage = className => {
+export const getLanguage = (className = '') => {
   const regex = /language-\w+/;
   const hasLanguage = !!className.match(regex);
 

@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: 'IBM Cloud',
+    title: 'Carbon',
     subtitle: 'Docs Starter',
+    gitUrl: 'http://github.com',
   },
-  pathPrefix: '/ibmcloud/docs-starter',
+  pathPrefix: '/',
   plugins: [
     'gatsby-plugin-sharp',
     {

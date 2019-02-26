@@ -1,110 +1,76 @@
 ---
-title: Welcome to the IBM Cloud Docs Starter
+title: gatsby-theme-carbon-docs
 ---
 
-## Getting started
+Gatsby theme for MDX-powered docs using the Carbon Design System
 
-This framework is based on [Gatsby](https://www.gatsbyjs.org), a static site generator that lets you build with React (without compromising on performance).
+## Using the theme
 
-### Step 1: Install the Gatsby CLI
+### Getting started
 
-```bash
-npm install --global gatsby-cli
-```
-
-or
+1. Download the starter with theme
 
 ```bash
-yarn global add gatsby-cli
+npx gatsby new my-carbon-docs https://github.com/ryanomackey/gatsby-carbon-docs-starter
+
+cd my-carbon-docs
 ```
 
-This utility lets you get up and running with a template (such as this one) very quickly.
-
-### Step 2: Create your new site and give it a title
-
-Now, you can use the Gatsby CLI to generate a new site using this repo as a template:
+2. Install the dependencies
 
 ```bash
-gatsby new my-new-docs https://github.ibm.com/ibmcloud/docs-starter
+# With NPM:
+npm install
+
+# With Yarn:
+yarn
 ```
 
-Once that's complete, navigate into the new directory and add a title and subtitle for your site:
-
-```js:title=gatsby-config.js
-module.exports = {
-  siteMetadata: {
-    title: 'IBM Cloud',
-    subtitle: 'Docs Starter' // You'll likely just want to change this one
-  },
-};
-```
-
-### Step 3: Start coding
-
-Head to the root of you new repo and start development:
+3. Start the development server:
 
 ```bash
+# With NPM:
 npm run develop
-```
 
-or
-
-```bash
+# With Yarn:
 yarn develop
 ```
 
-Now, you should be able to navigate to http://localhost:8000 to see your site running locally.
+If all went well, you should be able to head over to `http://localhost:8000` to see your new docs!
 
-### Step 4: Adding content
+If all _didn't_ go so well, or you're just curious about Gatsby itself, head over to [their documentation](https://www.gatsbyjs.org/docs/) for more information.
+
+### Adding content
 
 #### Adding a new section
 
-At the root of our `src/` directory is a file called `sections.js` that will looks like this:
+At the root of your project should be a directory called `data` with a file called `sections.yaml`.
 
-```js:title=sections.js
-export default {
-  books: {
-    title: 'Books',
-  },
-  movies: {
-    title: 'Movies',
-  },
-};
-```
+This file lets the theme know what you want the top-level sections of your left nav to be.
 
-This file determines the top-level entries in our interior left nav. So, to add a new entry _there_, we simply add a new entry _here_:
+For example, if we wanted to add a new section, we could do so by simply adding a new entry like so:
 
-```js{8-10}:title=sections.js
-export default {
-  books: {
-    title: 'Books',
-  },
-  movies: {
-    title: 'Movies',
-  },
-  music: {
-    title: 'Music',
-  },
-};
-```
-
-We now have a new addition to our interior left nav, but we're not done yet. Now, we need to add a new directory with the same name as our key to our `pages/` directory like so:
-
-```bash
-mkdir src/pages/music
+```yaml{7-9}:title=data/sections.yaml
+-
+  location: books
+  title: Books
+-
+  location: movies
+  title: Movies
+-
+  location: music
+  title: Music
 ```
 
 #### Adding a new page
 
-Now that we have a new directory for our new section, we can start adding markdown files to that new directory. And through the power of Gatsby, those pages and routes will automatically be generated for us.
-
-For instance, let's say we want to add an article about The Beatles to our new music section:
+To add a page, simply add a new mdx file to the `docs/` directory:
 
 ```bash
-touch src/pages/music/the-beatles.md
+touch docs/music/the-beatles.mdx
 ```
 
-Now, in `the-beatles.md` we just add a one piece of metadata (our title) and any other markdown content we want:
+Now, in `the-beatles.mdx` we just add one piece of metadata (our title) and any other markdown/jsx content we want:
 
 ```markdown:title=the-beatles.md
 ---
@@ -114,51 +80,36 @@ title: The Beatles
 The Beatles were an English rock band formed in Liverpool in 1960...
 ```
 
-### Step 5: Going Live
+Now, if you head over to `http://localhost:8000/music/the-beatles`, you should see your brand new page.
 
-One of the goals of this starter is to make it very simple to deploy your new docs to GitHub Pages, and enable automatic updates through Travis CI.
+---
 
-#### Create a new repository on GitHub Enterprise
+## Contributing to the theme
 
-If you haven't done so already, create a new repository for your docs on GitHub Enterprise. If you need help, check out [their documentation](https://help.github.com/enterprise/2.14/user/articles/create-a-repo/).
+If you'd like to contribute to the theme (bug fixes, design help, etc.), follow the local development instructions below:
 
-#### Set your path prefix
+### Prerequisites
 
-In order for your site to route correctly on GitHub pages, you'll need to specify a `pathPrefix` in `gatsby-config.js` based on your new repository.
+This project uses Yarn's workspace feature, so be sure to have [Yarn](https://yarnpkg.com) installed prior to setup.
 
-```js{3}:title=gatsby-config.js
-module.exports = {
-  // Note: it must *not* have a trailing slash.
-  pathPrefix: '/ibmcloud/docs-starter',
-};
+### Installation instructions
+
+1. Fork and clone the repo
+
+```
+git clone git@github.com:[your_username]/gatsby-theme-carbon-docs.git
+
+cd gatsby-theme-carbon-docs
 ```
 
-> This starter lives at `https://github.ibm.com/ibmcloud/docs-starter`, so its `pathPrefix` is:
-> `/ibmcloud/docs-starter`.
+2. Install the dependencies
 
-#### Enable GitHub Pages
+```
+yarn
+```
 
-Next, [create a new branch](https://help.github.com/enterprise/2.14/user/articles/creating-and-deleting-branches-within-your-repository/) for your repository called `gh-pages`, and select it as the "Source" branch under "GitHub Pages" in your repository settings.
+3. Start the development server
 
-#### Enable Travis CI for your repository
-
-Now, head to [Travis](https://travis.ibm.com/profile) to enable Travis for your repository by clicking the toggle next to your repository on the list.
-
-**NOTE**: If you don't see your repository in the list, you may need to click the "Sync account" button in the top right-hand corner.
-
-Once that's enabled, you'll need to add an environment variable called `GITHUB_TOKEN` to your repository's settings on Travis.
-
-This token should be a personal access token for GitHub, which can be acquired from [here](https://github.ibm.com/settings/tokens/new), and should have the following permissions:
-
-- `repo`,
-- `read:org`,
-- `user:email`,
-- `write:repo_hook`
-
-#### Push your code to your new repository
-
-Finally, it's time to commit any changes and push them to the master branch of your new repository. Once that happens, Travis will trigger, and your Gatsby site will be built and copied over to your `gh-pages` branch automatically!
-
-## Questions?
-
-If you ran into any snags or need additional help, be sure to check out Gatsby's great [documentation](https://www.gatsbyjs.org/docs/) or reach out to `@ryan.o.mackey` on Slack.
+```
+yarn workspace site develop
+```

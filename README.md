@@ -1,8 +1,90 @@
 # `gatsby-theme-carbon-docs`
 
-Gatsby theme for docs using the Carbon Design System
+Gatsby theme for MDX-powered docs using the Carbon Design System
 
-## Local development
+## Using the theme
+
+### Getting started
+
+1. Download the starter with theme
+
+```bash
+npx gatsby new my-carbon-docs https://github.com/ryanomackey/gatsby-carbon-docs-starter
+
+cd my-carbon-docs
+```
+
+2. Install the dependencies
+
+```bash
+# With NPM:
+npm install
+
+# With Yarn:
+yarn
+```
+
+3. Start the development server:
+
+```bash
+# With NPM:
+npm run develop
+
+# With Yarn:
+yarn develop
+```
+
+If all went well, you should be able to head over to `http://localhost:8000` to see your new docs!
+
+If all _didn't_ go so well, or you're just curious about Gatsby itself, head over to [their documentation](https://www.gatsbyjs.org/docs/) for more information.
+
+### Adding content
+
+#### Adding a new section
+
+At the root of your project should be a directory called `data` with a file called `sections.yaml`.
+
+This file lets the theme know what you want the top-level sections of your left nav to be.
+
+For example, if we wanted to add a new section, we could do so by simply adding a new entry like so:
+
+```yaml{7-9}:title=data/sections.yaml
+-
+  location: books
+  title: Books
+-
+  location: movies
+  title: Movies
+-
+  location: music
+  title: Music
+```
+
+#### Adding a new page
+
+To add a page, simply add a new mdx file to the `docs/` directory:
+
+```bash
+touch docs/music/the-beatles.mdx
+```
+
+Now, in `the-beatles.mdx` we just add one piece of metadata (our title) and any other markdown/jsx content we want:
+
+```markdown:title=the-beatles.md
+---
+title: The Beatles
+---
+
+The Beatles were an English rock band formed in Liverpool in 1960...
+```
+
+Now, if you head over to `http://localhost:8000/music/the-beatles`, you should see your brand new page.
+
+---
+
+## Contributing to the theme
+
+If you'd like to contribute to the theme (bug fixes, design help, etc.), follow the local development instructions below:
 
 ### Prerequisites
 
@@ -10,10 +92,12 @@ This project uses Yarn's workspace feature, so be sure to have [Yarn](https://ya
 
 ### Installation instructions
 
-1. Clone the repo
+1. Fork and clone the repo
 
 ```
-git clone git@github.com:ryanomackey/gatsby-theme-carbon-docs.git
+git clone git@github.com:[your_username]/gatsby-theme-carbon-docs.git
+
+cd gatsby-theme-carbon-docs
 ```
 
 2. Install the dependencies
@@ -22,7 +106,7 @@ git clone git@github.com:ryanomackey/gatsby-theme-carbon-docs.git
 yarn
 ```
 
-3. Start the development server with Gatsby
+3. Start the development server
 
 ```
 yarn workspace site develop
