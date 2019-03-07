@@ -9,11 +9,12 @@ notifications:
   email: false
 install:
   - yarn
+  - yarn global add lerna
 script:
   - yarn test
 deploy:
   provider: script
-  script: "yarn lerna:publish"
+  script: "lerna publish --conventional-commits --yes"
 branches:
   only:
   - master
