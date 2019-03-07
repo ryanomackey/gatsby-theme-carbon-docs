@@ -12,6 +12,7 @@ branches:
   - master
 install:
   - yarn
+  - yarn global add lerna
 script:
   - yarn test
 deploy:
