@@ -7,18 +7,13 @@ node_js:
   - 8
 notifications:
   email: false
-install:
-  - yarn
-  - yarn global add lerna
-before_script:
-  - git checkout master
-script:
-  - yarn test
-after_success:
-  - git push
-deploy:
-  provider: script
-  script: "lerna publish --conventional-commits --yes"
 branches:
   only:
   - master
+install:
+  - yarn
+script:
+  - yarn test
+deploy:
+  provider: script
+  script: yarn semantic-release

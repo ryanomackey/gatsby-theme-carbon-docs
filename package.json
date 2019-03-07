@@ -7,10 +7,13 @@
   ],
   "scripts": {
     "commit": "git-cz",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "semantic-release": "lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'"
   },
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "lerna": "^3.13.1",
+    "semantic-release": "^15.13.3",
+    "semantic-release-monorepo": "^6.1.1"
   },
   "name": "gatsby-theme-carbon-docs"
 }
