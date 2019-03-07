@@ -11,8 +11,9 @@ install:
   - yarn
 script:
   - yarn test
-after_success:
-  - yarn publish
+deploy:
+  provider: script
+  script: "yarn run lerna:publish"
 branches:
   only:
   - master
