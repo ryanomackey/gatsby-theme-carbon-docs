@@ -10,9 +10,12 @@ notifications:
 install:
   - yarn
   - yarn global add lerna
-  - lerna bootstrap
+before_script:
+  - git checkout master
 script:
   - yarn test
+after_success:
+  - git push
 deploy:
   provider: script
   script: "lerna publish --conventional-commits --yes"
