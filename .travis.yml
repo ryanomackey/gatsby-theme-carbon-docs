@@ -10,7 +10,7 @@ notifications:
 install:
   - yarn
   - yarn global add lerna
-  - lerna bootstrap --hoist
+  - lerna bootstrap
 script:
   - yarn test
 deploy:
