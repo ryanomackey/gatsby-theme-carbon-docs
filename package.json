@@ -4,5 +4,14 @@
   "workspaces": [
     "site",
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "commit": "git-cz",
+    "publish": "lerna publish --conventional-commits --yes",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  },
+  "name": "gatsby-theme-carbon-docs"
 }
