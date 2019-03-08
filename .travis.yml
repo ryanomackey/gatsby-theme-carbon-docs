@@ -12,9 +12,9 @@ branches:
   - master
 install:
   - yarn
-  - yarn global add lerna semantic-release@15.9.7 semantic-release-monorepo
 script:
   - yarn test
 deploy:
   provider: script
   script: yarn semantic-release
+  skip_cleanup: true
