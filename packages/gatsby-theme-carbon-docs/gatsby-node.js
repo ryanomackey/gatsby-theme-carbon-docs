@@ -1,3 +1,4 @@
+const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -75,5 +76,20 @@ exports.createPages = ({ graphql, actions }) => {
         });
       }),
     );
+  });
+};
+
+// Process this site as a theme when installed as a package from npm
+exports.onCreateWebpackConfig = ({ loaders, actions }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          include: path.dirname(require.resolve('gatsby-theme-carbon-docs')),
+          use: [loaders.js()],
+        },
+      ],
+    },
   });
 };
