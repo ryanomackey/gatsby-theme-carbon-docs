@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "lerna": "^3.13.1",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "15.9.17",
     "semantic-release-monorepo": "^6.1.1"
   }
 }

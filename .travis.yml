@@ -12,7 +12,7 @@ branches:
   - master
 install:
   - yarn
-  - yarn global add lerna semantic-release semantic-release-monorepo
+  - yarn global add lerna semantic-release@15.9.7 semantic-release-monorepo
 script:
   - yarn test
 deploy:
